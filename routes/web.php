@@ -11,9 +11,16 @@
 */
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/about', [AboutController::class, 'index']);
+
+Route::get('/login', [LoginController::class, 'login']);
+
+Route::get('/characters', [CharacterController::class, 'index']);
+;
