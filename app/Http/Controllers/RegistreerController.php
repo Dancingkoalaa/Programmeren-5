@@ -9,5 +9,6 @@ class RegistreerController extends Controller
     public function Registreer()
     {
     //nog niet veel hier..
+    //dit wordt de registratie controller
     }
 }

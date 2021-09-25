@@ -2,6 +2,7 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     <title>Hello World</title>
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
 </head>
 <body>
 <nav>
