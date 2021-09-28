@@ -27,3 +27,7 @@ Route::get('/characters', [CharacterController::class, 'index']);
 
 Route::get('/registreer', [RegistreerController::class, 'registreer']);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
