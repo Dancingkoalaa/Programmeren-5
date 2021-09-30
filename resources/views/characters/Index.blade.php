@@ -5,18 +5,20 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
 </head>
 <body>
-<nav>
-    <div><a href="/">Homepage</a></div>
-    <div><a href="/characters">Characters</a></div>
-    <div><a href="/about">About</a></div>
-    <div><a href="/login">Login</a></div>
-    <div><a href="/registreer">Register</a></div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div><a class="navbar-brand" href="/">Homepage</a></div>
+        <div><a class="navbar-brand" href="/characters">Characters</a></div>
+        <div><a class="navbar-brand" href="/about">About</a></div>
+        <div><a class="navbar-brand" href="/login">Login</a></div>
+        <div><a class="navbar-brand" href="/registreer">Register</a></div>
+    </div>
 </nav>
 <div>
     <h1>{{$title}}</h1>
     <ul>
-        @foreach($characters as $characters)
-            <li>Character: {{$characters->Name}} is een {{$characters->Race}} en specialiseert in {{$characters->proficiency}}</li>
+        @foreach($characters as $character)
+            <li><a href="characters/{{ $character->id }}">Character: {{$character->Name}} is een {{$character->Race}} en specialiseert in {{$character->proficiency}}</a></li>
         @endforeach
     </ul>
 </div>

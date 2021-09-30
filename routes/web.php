@@ -27,6 +27,7 @@ Route::get('/characters', [CharacterController::class, 'index']);
 
 Route::get('/registreer', [RegistreerController::class, 'registreer']);
 
+Route::get('characters/{id}', [CharacterController::class, 'showID']);
 
 Auth::routes();
 

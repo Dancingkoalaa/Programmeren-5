@@ -15,17 +15,14 @@
         <div><a class="navbar-brand" href="/registreer">Register</a></div>
     </div>
 </nav>
-    <div>
-        <div>
-            <h1>{{$title}}</h1>
-            <form method="get" action="/about">
-                    {{$username}}
-                <input>
-                    {{$password}}
-                <input>
-                <button type="submit">{{$title}}</button>
-            </form>
-        </div>
+<div>
+    <div class="col-7 border m-2 pb-3 align-self-start">
+        <h1 class="h2 mt-3">Character: {{$character->Name}} is een {{$character->Race}}</h1>
+        <p class="lead"></p>
+        <p>
+            {{$character->proficiency}}
+        </p>
     </div>
+</div>
 </body>
 </html>

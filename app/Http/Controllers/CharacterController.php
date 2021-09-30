@@ -10,11 +10,15 @@ class CharacterController extends Controller
     public function index()
     {
         $title = 'Character Sheet!!';
-        //get data from character model
+
         $characters = Character::all();
-        //SELECT * FROM characters
-        //dd($characters);
-        //pass data on to character view
+        //$characters = Character::where('active', '1')->get();
+
         return view('characters.index', compact('title', 'characters'));
+    }
+
+    public function showID($id){
+        $character = Character::findOrFail($id);
+        return view('characters.Character-Details', compact('character'));
     }
 }
