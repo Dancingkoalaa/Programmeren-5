@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
         @foreach($characters as $character)
-            <div class="col-sm border border-dark">
+            <div class="col-sm border border-dark rounded-0">
                 <p href="characters/{{ $character->id }}">Character: {{$character->Name}} is een {{$character->Race}} en specialiseert in {{$character->proficiency}}</p>
                 <button type="button" class="btn btn-outline-dark">Dit gaat ergens naartoe!</button>
             </div>
