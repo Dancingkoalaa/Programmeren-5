@@ -11,7 +11,6 @@
         <div><a class="navbar-brand" href="/characters">Characters</a></div>
         <div><a class="navbar-brand" href="/about">About</a></div>
         <div><a class="navbar-brand" href="/login">Login</a></div>
-        <div><a class="navbar-brand" href="/registreer">Register</a></div>
     </div>
 </nav>
 <div>
