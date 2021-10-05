@@ -16,6 +16,23 @@ class CharacterController extends Controller
 
         return view('characters.index', compact('title', 'characters'));
     }
+
+    public function create()
+    {
+        return view('characters.Character-Create');
+    }
+
+    public function store(Request $request)
+    {
+        $character = new character;
+        $character->Name = $request->input('Name');
+        $character->Race = $request->input('Race');
+        $character->proficiency = $request->input('Proficiency');
+        $character->icon = $request->input('icon');
+        $character->portrait = $request->input('portrait');
+        $character->save();
+        return redirect()->back();
+    }
     public function edit($id)
     {
         $character = Character::find($id);

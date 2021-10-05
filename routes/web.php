@@ -28,6 +28,8 @@ Route::get('/characters', [CharacterController::class, 'index']);
 Route::get('/registreer', [RegistreerController::class, 'registreer']);
 
 Route::get('characters/{id}', [CharacterController::class, 'showID']);
+Route::get('add-character', [CharacterController::class, 'create']);
+Route::post('add-character', [CharacterController::class, 'store']);
 Route::get('edit-character/{id}', [CharacterController::class, 'edit']);
 Route::put('update-character/{id}', [CharacterController::class, 'update']);
 Route::get('delete/{id}', [CharacterController::class, 'deleteID']);
