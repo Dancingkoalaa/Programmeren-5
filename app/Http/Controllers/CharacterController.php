@@ -16,6 +16,21 @@ class CharacterController extends Controller
 
         return view('characters.index', compact('title', 'characters'));
     }
+    public function edit($id)
+    {
+        $character = Character::find($id);
+        return view('characters.Character-Edit', compact('character'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $character = Character::find($id);
+        $character->name = $request->input('Name');
+        $character->race = $request->input('Race');
+        $character->proficiency = $request->input('Proficiency');
+        $character->update();
+        return redirect()->back();
+    }
 
     public function showID($id){
         $character = Character::findOrFail($id);
