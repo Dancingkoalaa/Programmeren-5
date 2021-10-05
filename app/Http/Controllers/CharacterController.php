@@ -21,4 +21,11 @@ class CharacterController extends Controller
         $character = Character::findOrFail($id);
         return view('characters.Character-Details', compact('character'));
     }
+
+    public function deleteID($id) {
+        $character = Character::find($id);
+        $character->delete();
+        //return view('characters.index', compact('title', 'characters'));
+        return redirect()->back();
+    }
 }
