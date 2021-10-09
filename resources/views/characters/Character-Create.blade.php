@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
 
-            <form action="{{ url('add-character') }}" method="POST">
+            <form action="{{ url('add-character') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group mb-3">
@@ -24,11 +24,11 @@
                 </div>
                 <div class="form-group mb-3">
                     <label for="">Image (Added later)</label>
-                    <input type="text" name="icon" class="form-control" value="1">
+                    <input type="file" name="icon" class="form-control">
                 </div>
                 <div class="form-group mb-3">
                     <label for="">Image (Added later)</label>
-                    <input type="text" name="portrait" class="form-control" value="1">
+                    <input type="file" name="portrait" class="form-control">
                 </div>
                 <div class="form-group mb-3">
                     <button type="submit" class="btn btn-primary">Save Character</button>
