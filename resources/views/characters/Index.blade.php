@@ -3,19 +3,37 @@
     @section('content')
     <div>
     <h1>{{$title}}</h1>
+        <a href="add-character" class="btn btn-primary btn-sm">Create a new character!</a>
+        <form class="searchbar" action="/characters" method="get">
+            <div>
+                <input placeholder="Search" name="search" type="text" value="" id="search">
+                <label class="hide-text" for="search">Search on words</label>
+            </div>
+
+            <div>
+                <input type="submit" value="Search">
+            </div>
+        </form>
     <div class="container">
         <div class="row">
-        @foreach($characters as $character)
-            <div class="col-sm border border-dark rounded-0">
-                <img src="{{$character->icon}}">
-                <p>Character: {{$character->Name}} is een {{$character->Race}} en specialiseert in {{$character->proficiency}}</p>
-                <a type="button" href="characters/{{ $character->id }}"  class="btn btn-outline-dark">Dit gaat ergens naartoe!</a>
-                <a href="add-character" class="btn btn-primary btn-sm">Create</a>
-                <a href="edit-character/{{$character->id}}" class="btn btn-primary btn-sm">Edit</a>
-                <a type="button" href="delete/{{$character->id}}" class="btn btn-outline-dark">Delete</a>
-            </div>
-        @endforeach
-        </div>
+                        @foreach($characters as $character)
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src="{{asset('storage/icon/' . $character->icon)}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$character->Name}}</h5>
+                                    <p class="card-text">{{$character->proficiency}}</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Race: {{$character->Race}}</li>
+                                </ul>
+                                <div class="card-body">
+                                    <a type="button" href="characters/{{ $character->id }}"  class="btn btn-outline-dark">Bekijk het character!</a>
+                                    <a type="button" href="edit-character/{{$character->id}}" class="btn btn-outline-dark">Bewerk character!</a>
+                                    <a type="button" href="delete/{{$character->id}}" class="btn btn-outline-dark">Verwijder character!</a>
+                                </div>
+                            </div>
+                        @endforeach
+                </div>
+             </div>
     </div>
-</div>
 @endsection
