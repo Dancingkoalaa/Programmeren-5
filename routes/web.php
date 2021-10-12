@@ -24,6 +24,7 @@ Route::get('/about', [AboutController::class, 'index']);
 Route::get('/login', [LoginController::class, 'login']);
 
 Route::get('/characters', [CharacterController::class, 'index']);
+Route::get('/changeStatus', [CharacterController::class, 'changeCharacterStatus']);
 
 Route::get('/registreer', [RegistreerController::class, 'registreer']);
 

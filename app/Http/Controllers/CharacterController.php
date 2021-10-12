@@ -12,7 +12,6 @@ class CharacterController extends Controller
     {
         $title = 'Character Sheet!!';
 
-//        $characters = Character::all();
         //$characters = Character::where('active', '1')->get();
         $search = $request->input('search');
 
@@ -28,6 +27,15 @@ class CharacterController extends Controller
         }
 
         return view('characters.index', compact('title', 'characters'));
+    }
+
+    public function changeCharacterStatus(Request $request)
+    {
+        $character = Character::find($request->id);
+        $character->active = $request->active;
+        $character->save();
+
+        return response()->json(['success'=>'Character status change successfully.']);
     }
 
     public function create()
@@ -107,6 +115,8 @@ class CharacterController extends Controller
             return redirect('/');
         }
     }
+
+
 
     public function showID($id){
         $character = Character::findOrFail($id);

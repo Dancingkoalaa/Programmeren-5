@@ -21,6 +21,7 @@ class CreateCharactersTable extends Migration
             $table->boolean('active')->default(1);
             $table->string('icon');
             $table->string('portrait');
+            $table->string('Tag')->nullable();
             $table->timestamps();
         });
     }
