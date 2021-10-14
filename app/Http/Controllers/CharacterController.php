@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Character;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class CharacterController extends Controller
@@ -72,6 +73,7 @@ class CharacterController extends Controller
             $character->proficiency = $request->input('Proficiency');
             $character->icon = $request->icon->hashName();
             $character->portrait = $request->portrait->hashName();
+            $character->user_id = \Auth::user()->id;
             $character->save();
         }
         return redirect()->back();
@@ -79,7 +81,14 @@ class CharacterController extends Controller
     public function edit($id)
     {
         $character = Character::findOrFail($id);
-        return view('characters.Character-Edit', compact('character'));
+
+        $user_id = Auth::id();
+
+        if ($user_id == $character->user_id) {
+            return view('characters.Character-Edit', compact('character'));
+        } else {
+            abort(401);
+        }
     }
 
     public function update(Request $request, Character $character)

@@ -22,6 +22,7 @@ class CreateCharactersTable extends Migration
             $table->string('icon');
             $table->string('portrait');
             $table->string('Tag')->nullable();
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
