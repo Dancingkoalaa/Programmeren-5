@@ -32,11 +32,18 @@ class CharacterController extends Controller
 
     public function changeCharacterStatus(Request $request)
     {
+
+        $user_id = Auth::id();
+
+        if ($user_id == $character->user_id) {
         $character = Character::find($request->id);
         $character->active = $request->active;
         $character->save();
 
         return response()->json(['success'=>'Character status change successfully.']);
+            } else {
+        abort(401);
+        }
     }
 
     public function create()
@@ -134,8 +141,15 @@ class CharacterController extends Controller
 
     public function deleteID($id) {
         $character = Character::find($id);
+        $user_id = Auth::id();
+
+        if ($user_id == $character->user_id) {
+
         $character->delete();
         //return view('characters.index', compact('title', 'characters'));
         return redirect()->back();
+        } else {
+            abort(401);
+        }
     }
 }

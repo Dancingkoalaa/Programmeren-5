@@ -13,6 +13,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistreerController;
 
 Route::get('/', function () {
@@ -35,8 +36,13 @@ Route::post('add-character', [CharacterController::class, 'store']);
 Route::get('edit-character/{character}', [CharacterController::class, 'edit']);
 Route::post('/store-edit/{character}', [CharacterController::class, 'update'])->name('store-edit');
 
+Route::get('user-profile/{id}', [ProfileController::class, 'edit']);
+Route::post('/store-profile/{user}', [ProfileController::class, 'update'])->name('store-profile');
+
 Route::get('delete/{id}', [CharacterController::class, 'deleteID']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/MyCharacters', [\App\Http\Controllers\MyCharactersController::class, 'index']);
