@@ -30,8 +30,8 @@ Route::get('/changeStatus', [CharacterController::class, 'changeCharacterStatus'
 Route::get('/registreer', [RegistreerController::class, 'registreer']);
 
 Route::get('characters/{id}', [CharacterController::class, 'showID']);
-Route::get('add-character', [CharacterController::class, 'create']);
-Route::post('add-character', [CharacterController::class, 'store']);
+Route::get('add-character', [CharacterController::class, 'create'])->middleware('auth');
+Route::post('add-character', [CharacterController::class, 'store'])->middleware('auth');
 
 Route::get('edit-character/{character}', [CharacterController::class, 'edit']);
 Route::post('/store-edit/{character}', [CharacterController::class, 'update'])->name('store-edit');
