@@ -13,8 +13,7 @@ class MyCharactersController extends Controller
         $title = "My profile";
         $id = Auth::id();
 
-        //$favouriteCharacters = CharacterUser::where('user_id','=', $id);
-
+        //gets every character from the database that match the id of the logged in creator
         $myCharacters = Character::all()
             ->where('user_id','=', $id);
 
