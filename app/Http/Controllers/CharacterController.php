@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Character;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class CharacterController extends Controller
@@ -39,11 +40,10 @@ class CharacterController extends Controller
 
     public function changeCharacterStatus(Request $request)
     {
-
+        $character = Character::find($request->id);
         $user_id = Auth::id();
         //checks if the user is the same as the creator and they are it will find the chosen character to allow the user to edit them
         if ($user_id == $character->user_id) {
-        $character = Character::find($request->id);
         $character->active = $request->active;
         $character->save();
 
@@ -100,12 +100,15 @@ class CharacterController extends Controller
     }
     public function edit($id)
     {
-        $character = Character::findOrFail($id);
+
+        $character = Character::find($id);
 
         $user_id = Auth::id();
 
+        $user = DB::table('users')->where('id', $user_id)->first();
+
         //if the user is not the same as the creator (can only if user tries to acces using link) they will get Error 401 (unauthorised)
-        if ($user_id == $character->user_id) {
+        if ($user->role == 'Admin' || $user_id == $character->user_id) {
             return view('characters.Character-Edit', compact('character'));
         } else {
             abort(401);
@@ -159,10 +162,15 @@ class CharacterController extends Controller
     }
 
     public function deleteID($id) {
+
         $character = Character::find($id);
+
         $user_id = Auth::id();
+
+        $user = DB::table('users')->where('id', $user_id)->first();
+
         //checks if the user who tried to delete the character has the same id as the creator. if not it will redirect the user to a 401 page
-        if ($user_id == $character->user_id) {
+        if ($user->role == 'Admin' || $user_id == $character->user_id) {
 
         $character->delete();
 
