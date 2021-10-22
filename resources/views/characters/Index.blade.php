@@ -7,6 +7,38 @@
         @else
         <a href="add-character" class="btn btn-primary btn-sm">Create a new character!</a>
         @endguest
+        <form>
+            <div class="tag-buttons">
+                <h3>Filter by tag</h3>
+                <div>
+                    <input name="tag" type="radio" id="t1" value="Assasin" autocomplete="off">
+                    <label for="t1">Assasin</label>
+                </div>
+                <div>
+                    <input name="tag" type="radio" id="t2" value="Fighter" autocomplete="off">
+                    <label for="t2">Fighter</label>
+                </div>
+                <div>
+                    <input name="tag" type="radio" id="t3" value="Mage" autocomplete="off">
+                    <label for="t3">Mage</label>
+                </div>
+                <div>
+                    <input name="tag" type="radio" id="t4" value="Marksman" autocomplete="off">
+                    <label for="t4">Marksman</label>
+                </div>
+                <div>
+                    <input name="tag" type="radio" id="t5" value="Support" autocomplete="off">
+                    <label for="t5">Support</label>
+                </div>
+                <div>
+                    <input name="tag" type="radio" id="t6" value="Tank" autocomplete="off">
+                    <label for="t6">Tank</label>
+                </div>
+            </div>
+            <div>
+                <input type="submit" value="Filter">
+            </div>
+        </form>
         <form class="searchbar" action="/characters" method="get">
             <div>
                 <input placeholder="Search" name="search" type="text" value="" id="search">

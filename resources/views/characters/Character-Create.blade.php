@@ -30,6 +30,17 @@
                     <label for="">Image (Added later)</label>
                     <input type="file" name="portrait" class="form-control">
                 </div>
+                <div>
+                    <label for="tag">Character Tag</label>
+                    <select name="tag" id="tag">
+                        <option value="Assasin" selected>Assasin</option>
+                        <option value="Fighter">Fighter</option>
+                        <option value="Mage">Mage</option>
+                        <option value="Marksman">Marksman</option>
+                        <option value="Support">Support</option>
+                        <option value="Tank">Tank</option>
+                    </select>
+                </div>
                 <div class="form-group mb-3">
                     <button type="submit" class="btn btn-primary">Save Character</button>
                 </div>

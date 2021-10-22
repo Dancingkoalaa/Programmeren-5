@@ -15,13 +15,18 @@ class CharacterController extends Controller
 
         //gives the value to $search from the view
         $search = $request->input('search');
+        $tag = $request->input('tag');
 
         //checks if $search is empty. if true it shows all active Characters
-        if (!$search) {
+        if (!$search && !$tag) {
 
             $characters = Character::all()
                 ->where('active', '=', 1);
         //If $search is not empty it will show all characters that match the input and orders them by ID
+        }elseif($tag){
+            $characters = Character::all()
+                ->where('Tag', '=', $tag)
+                ->where('active', '=', 1);
         } else {
             $characters = Character::where('name','like','%'.$search.'%')
                 ->where('active', '=', 1)
@@ -87,6 +92,7 @@ class CharacterController extends Controller
             $character->proficiency = $request->input('Proficiency');
             $character->icon = $request->icon->hashName();
             $character->portrait = $request->portrait->hashName();
+            $character->Tag = $request->input('tag');
             $character->user_id = \Auth::user()->id;
             $character->save();
         }
