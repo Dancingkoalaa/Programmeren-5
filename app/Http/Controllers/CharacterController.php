@@ -107,7 +107,7 @@ class CharacterController extends Controller
 
         $user = DB::table('users')->where('id', $user_id)->first();
 
-        //if the user is not the same as the creator (can only if user tries to acces using link) they will get Error 401 (unauthorised)
+        //if the user is not the same as the creator or is the admin (can only if user tries to acces using link) they will get Error 401 (unauthorised)
         if ($user->role == 'Admin' || $user_id == $character->user_id) {
             return view('characters.Character-Edit', compact('character'));
         } else {
@@ -169,7 +169,7 @@ class CharacterController extends Controller
 
         $user = DB::table('users')->where('id', $user_id)->first();
 
-        //checks if the user who tried to delete the character has the same id as the creator. if not it will redirect the user to a 401 page
+        //checks if the user who tried to delete the character has the same id as the creator or is the admin. if not it will redirect the user to a 401 page
         if ($user->role == 'Admin' || $user_id == $character->user_id) {
 
         $character->delete();
