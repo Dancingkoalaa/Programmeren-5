@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Character;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +13,7 @@ class CharacterController extends Controller
 {
     public function index(Request $request)
     {
+
         $title = 'Character Sheet!!';
 
         //gives the value to $search from the view
@@ -57,7 +59,14 @@ class CharacterController extends Controller
     public function create()
     {
         //if the user is logged in this will let the user create their own character
-        return view('characters.Character-Create');
+        $amountFavorites = User::findOrFail(Auth::id())->characters;
+        $user_id = Auth::id();
+        $user = DB::table('users')->where('id', $user_id)->first();
+        if (count($amountFavorites) >= 5 || $user->role == 'Admin')
+        {
+            return view('characters.Character-Create');
+        }
+        abort(401);
     }
 
     public function store(Request $request)
@@ -178,5 +187,19 @@ class CharacterController extends Controller
         } else {
             abort(401);
         }
+    }
+    public function storeFavourite(Character $character)
+    {
+        $user = User::find(Auth::id());
+
+        if($user->characters->contains($character))
+        {
+            $user->characters()->detach($character->id);
+        } else
+        {
+            $user->characters()->attach($character->id);
+        }
+
+        return redirect('/characters');
     }
 }

@@ -41,6 +41,8 @@ Route::post('/store-profile/{user}', [ProfileController::class, 'update'])->name
 
 Route::get('delete/{id}', [CharacterController::class, 'deleteID']);
 
+Route::get('/favourite/{character}', [CharacterController::class, 'storeFavourite'])->name('character.favourite');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
