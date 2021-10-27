@@ -10,13 +10,7 @@ class ProfileController extends Controller
 {
     public function edit()
     {
-        $id = Auth::id();
-
-        $user = user::all()
-            ->where('id', '=', $id);
-
-            return view('auth.profile', compact('user'));
-
+        return view('auth.profile');
     }
 
     public function update(Request $request, User $user)

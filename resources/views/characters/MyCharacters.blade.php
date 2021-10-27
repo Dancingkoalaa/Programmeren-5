@@ -3,7 +3,9 @@
 @section('content')
     <p>My creations</p>
     <section class="creations">
-        <a href="add-character" class="btn btn-primary btn-sm">Create a new character!</a>
+        @if(@count($favorites) >= 5 || Auth::user()->role === 'Admin')
+            <a href="add-character" class="btn btn-primary btn-sm">Create a new character!</a>
+        @endif
     <div class="container">
         <div class="row">
         @foreach($myCharacters as $myCharacter)

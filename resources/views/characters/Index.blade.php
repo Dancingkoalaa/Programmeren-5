@@ -5,7 +5,6 @@
         <h1>{{$title}}</h1>
         @guest
         @else
-        <a href="add-character" class="btn btn-primary btn-sm">Create a new character!</a>
         @endguest
         <form>
             <div class="tag-buttons">

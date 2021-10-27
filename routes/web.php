@@ -36,8 +36,8 @@ Route::post('add-character', [CharacterController::class, 'store'])->middleware(
 Route::get('edit-character/{character}', [CharacterController::class, 'edit']);
 Route::post('/store-edit/{character}', [CharacterController::class, 'update'])->name('store-edit');
 
-Route::get('user-profile/{id}', [ProfileController::class, 'edit']);
-Route::post('/store-profile/{user}', [ProfileController::class, 'update'])->name('store-profile');
+Route::get('user-profile', [ProfileController::class, 'edit'])->middleware('auth');
+Route::post('/store-profile/{user}', [ProfileController::class, 'update'])->name('store-profile')->middleware('auth');
 
 Route::get('delete/{id}', [CharacterController::class, 'deleteID']);
 
