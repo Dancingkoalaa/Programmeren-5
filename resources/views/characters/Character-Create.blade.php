@@ -33,12 +33,12 @@
                 <div>
                     <label for="tag">Character Tag</label>
                     <select name="tag" id="tag">
-                        <option value="Assasin" selected>Assasin</option>
-                        <option value="Fighter">Fighter</option>
-                        <option value="Mage">Mage</option>
-                        <option value="Marksman">Marksman</option>
-                        <option value="Support">Support</option>
-                        <option value="Tank">Tank</option>
+                        <option value="Swords" selected>Swords</option>
+                        <option value="Bows">Bows</option>
+                        <option value="Magic">Magic</option>
+                        <option value="Spears">Spears</option>
+                        <option value="BigSwords">BigSwords</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
                 <div class="form-group mb-3">
