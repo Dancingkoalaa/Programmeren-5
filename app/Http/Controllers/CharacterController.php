@@ -177,7 +177,7 @@ class CharacterController extends Controller
         $user_id = Auth::id();
 
         $user = DB::table('users')->where('id', $user_id)->first();
-
+        $users = $character->users()->detach();
         //checks if the user who tried to delete the character has the same id as the creator or is the admin. if not it will redirect the user to a 401 page
         if ($user->role == 'Admin' || $user_id == $character->user_id) {
 
