@@ -42,7 +42,7 @@ class CharacterController extends Controller
 
     public function changeCharacterStatus(Request $request)
     {
-        $character = Character::find($request->id);
+        $character = Character::findOrFail($request->id);
         $user_id = Auth::id();
         //checks if the user is the same as the creator and they are it will find the chosen character to allow the user to edit them
         if ($user_id == $character->user_id) {
@@ -172,7 +172,7 @@ class CharacterController extends Controller
 
     public function deleteID($id) {
 
-        $character = Character::find($id);
+        $character = Character::findOrFail($id);
 
         $user_id = Auth::id();
 
@@ -190,7 +190,7 @@ class CharacterController extends Controller
     }
     public function storeFavourite(Character $character)
     {
-        $user = User::find(Auth::id());
+        $user = User::findOrFail(Auth::id());
 
         if($user->characters->contains($character))
         {
