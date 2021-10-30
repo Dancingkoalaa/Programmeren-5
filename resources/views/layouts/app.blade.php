@@ -39,7 +39,7 @@
                     <ul class="navbar-nav mr-auto">
                         <div><a class="navbar-brand" href="/">Homepage</a></div>
                         <div><a class="navbar-brand" href="/characters">Characters</a></div>
-                        <div><a class="navbar-brand" href="/about">About</a></div>
+{{--                        <div><a class="navbar-brand" href="/about">About</a></div>--}}
                     </ul>
 
                     <!-- Right Side Of Navbar -->

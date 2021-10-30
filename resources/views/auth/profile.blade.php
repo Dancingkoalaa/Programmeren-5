@@ -18,7 +18,7 @@
                     <input type="text" name="email" value="{{Auth::user()->email}}" class="form-control">
                 </div>
                 <div class="form-group mb-3">
-                    <button type="submit" class="btn btn-primary">Update Character</button>
+                    <button type="submit" class="btn btn-primary">Update Profile</button>
                 </div>
             </form>
 

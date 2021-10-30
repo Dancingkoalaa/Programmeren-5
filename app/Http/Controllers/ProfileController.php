@@ -25,7 +25,7 @@ class ProfileController extends Controller
 
         if ($user->save())
         {
-            return redirect('/');
+            return redirect('/home');
         }
     }
 }
